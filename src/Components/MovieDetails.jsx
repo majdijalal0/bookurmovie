@@ -44,7 +44,7 @@ export default function MovieDetails() {
         ? `${BASE_IMAGE_URL}${movie.poster_path}`
         : 'placeholder_image_path.jpg';
     return (
-        <div className="flex flex-row bg-gray-900   ">
+        <div className="flex flex-row bg-gray-900 h-screen">
             <div className="flex  m-5  shadow-red-500 h-150 w-300  ">
                 <img className="object-cover  rounded-2xl ring ring-red-500 hover:shadow-xl/50 hover:shadow-red-900 hover:scale-102 " src={posterUrl} alt={`${movie.title} poster`} />
             </div>
