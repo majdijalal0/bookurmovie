@@ -1,0 +1,10 @@
+# Logs
+*.log
+
+# Database Configs
+php/config.php
+config.php
+
+# IDE
+.vscode
+.idea
