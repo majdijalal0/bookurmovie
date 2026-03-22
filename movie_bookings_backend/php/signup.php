@@ -1,16 +1,16 @@
 <?php
-session_start();
-require_once __DIR__ . '/config.php';
-header("Access-Control-Allow-Origin: " . FRONTEND_URL);
-header("Access-Control-Allow-Credentials: true");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Access-Control-Allow-Methods: POST, OPTIONS");
 
+header("Access-Control-Allow-Origin: " . getenv('FRONTEND_URL') ?: 'https://bookurmovie.vercel.app');
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
 
+session_start();
+require_once __DIR__ . '/config.php';
 include 'db_connect.php';
 
 $data = json_decode(file_get_contents("php://input"));
