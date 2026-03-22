@@ -1,8 +1,0 @@
-[phases.setup]
-nixPkgs = ['php', 'apache']
-
-[phases.build]
-cmds = ['echo "Building PHP backend..."']
-
-[start]
-cmd = "php -S 0.0.0.0:$PORT -t /app/php"
