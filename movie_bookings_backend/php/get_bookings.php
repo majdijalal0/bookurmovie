@@ -1,12 +1,7 @@
 <?php
-session_start();
-
-require_once __DIR__ . '/config.php';
-header("Access-Control-Allow-Origin: " . FRONTEND_URL);
-header("Access-Control-Allow-Credentials: true");
-header("Content-Type: application/json");
-
-include 'db_connect.php';
+require_once __DIR__ . '/cors.php';      
+session_start();                          
+require_once __DIR__ . '/db_connect.php';
 
 if (!isset($_SESSION['user_id'])) {
     http_response_code(401);

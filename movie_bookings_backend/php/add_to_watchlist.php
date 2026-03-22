@@ -1,16 +1,13 @@
 <?php
-require_once __DIR__ . '/config.php';
-header("Access-Control-Allow-Origin: " . FRONTEND_URL);
-header("Access-Control-Allow-Credentials: true");
-header("Access-Control-Allow-Methods: POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
+require_once __DIR__ . '/cors.php';      
+session_start();                          
+require_once __DIR__ . '/db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit(0);
 }
 
-session_start();
-include 'db_connect.php';
+
 
 $data = json_decode(file_get_contents("php://input"));
 

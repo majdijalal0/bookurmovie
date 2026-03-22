@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/cors.php';
 require_once __DIR__ . '/config.php';
 
 try {
@@ -13,4 +14,5 @@ try {
     echo json_encode(["message" => "Connection failed: " . $e->getMessage()]);
     exit();
 }
+
 ?>

@@ -1,11 +1,7 @@
 <?php
-session_start();
-require_once __DIR__ . '/config.php';
-header("Access-Control-Allow-Origin: " . FRONTEND_URL);
-header("Access-Control-Allow-Credentials: true");
-header("Content-Type: application/json");
-
-include 'db_connect.php';
+require_once __DIR__ . '/cors.php';      
+session_start();                          
+require_once __DIR__ . '/db_connect.php';
 
 $movie_title = isset($_GET['movie_title']) ? $_GET['movie_title'] : '';
 $booking_date = isset($_GET['booking_date']) ? $_GET['booking_date'] : '';
