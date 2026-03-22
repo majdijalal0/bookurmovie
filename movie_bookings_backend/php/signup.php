@@ -54,6 +54,6 @@ try {
     ]);
 } catch(PDOException $e) {
     http_response_code(500);
-    echo json_encode(["message" => "Internal Server Error"]);
+    echo json_encode(["message" => "Internal Server Error: " . $e->getMessage()]);
 }
 ?>
