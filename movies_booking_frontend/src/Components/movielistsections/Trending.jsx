@@ -11,6 +11,7 @@ export default function Trending() {
   const [curr, setCurr] = useState(0);
   const slideIntervalRef = useRef(null);
   const navigate = useNavigate();
+  const touchStartX = useRef(null);
 
   const next = useCallback(() => {
     setCurr((c) => (c === movies.length - 1 ? 0 : c + 1));
@@ -62,8 +63,27 @@ export default function Trending() {
     ? "kfXgo2rMF1A19celCwLyQ4Xwpf8.jpg"
     : displayedMovie.backdrop_path;
 
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.changedTouches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(deltaX) > 50) {
+      if (deltaX < 0) { next(); resetInterval(); }
+      else { setCurr((c) => (c === 0 ? movies.length - 1 : c - 1)); resetInterval(); }
+    }
+    touchStartX.current = null;
+  };
+
   return (
-    <div className="relative w-full h-[85vh] md:h-[90vh] overflow-hidden bg-gray-950 group">
+    <div
+      className="relative w-full h-[85vh] md:h-[90vh] overflow-hidden bg-gray-950 group"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <AnimatePresence mode="wait">
         <motion.div
            key={curr}
@@ -125,21 +145,23 @@ export default function Trending() {
       </div>
 
 
-      <div className="absolute inset-y-0 left-4 md:left-8 flex items-center z-40">
+      <div className="absolute inset-y-0 left-2 md:left-8 flex items-center z-40">
         <button 
           onClick={handlePrev}
-          className="bg-gray-900/40 hover:bg-red-600 border border-gray-400/30 text-white w-12 h-12 flex items-center justify-center rounded-full backdrop-blur-md transition-all duration-300 shadow-lg hover:scale-110 opacity-0 md:opacity-100 group-hover:opacity-100 hidden md:flex"
+          className="bg-gray-900/60 hover:bg-red-600 border border-gray-400/30 text-white w-9 h-9 md:w-12 md:h-12 flex items-center justify-center rounded-full backdrop-blur-md transition-all duration-300 shadow-lg hover:scale-110"
         >
-          <ChevronLeft size={28} />
+          <ChevronLeft size={20} className="md:hidden" />
+          <ChevronLeft size={28} className="hidden md:block" />
         </button>
       </div>
       
-      <div className="absolute inset-y-0 right-4 md:right-8 flex items-center z-40">
+      <div className="absolute inset-y-0 right-2 md:right-8 flex items-center z-40">
         <button 
           onClick={handleNext}
-          className="bg-gray-900/40 hover:bg-red-600 border border-gray-400/30 text-white w-12 h-12 flex items-center justify-center rounded-full backdrop-blur-md transition-all duration-300 shadow-lg hover:scale-110 opacity-0 md:opacity-100 group-hover:opacity-100 hidden md:flex"
+          className="bg-gray-900/60 hover:bg-red-600 border border-gray-400/30 text-white w-9 h-9 md:w-12 md:h-12 flex items-center justify-center rounded-full backdrop-blur-md transition-all duration-300 shadow-lg hover:scale-110"
         >
-          <ChevronRight size={28} />
+          <ChevronRight size={20} className="md:hidden" />
+          <ChevronRight size={28} className="hidden md:block" />
         </button>
       </div>
 

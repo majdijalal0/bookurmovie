@@ -1,7 +1,7 @@
 import Logo from '../assets/Logo.png';
 import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Modal from './Modal';
+import AuthModal from './Login/AuthModal.jsx';
 import { useAuth } from '../context/AuthContext';
 import { Menu, X } from 'lucide-react';
 
@@ -15,7 +15,6 @@ export default function Header() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
@@ -53,7 +52,6 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
               <NavLink 
                 className={({ isActive }) => `text-lg font-medium transition-colors ${isActive ? 'text-red-500' : 'text-gray-300 hover:text-white'}`} 
@@ -98,7 +96,7 @@ export default function Header() {
                     className="bg-white text-gray-900 rounded-full px-8 py-2.5 text-sm font-bold hover:bg-gray-200 shadow-xl transition-all hover:scale-105"
                     onClick={openModal}
                   >
-                    Sign up
+                    Login
                   </button>
                 </div>
               )}
@@ -163,7 +161,7 @@ export default function Header() {
                       openModal();
                     }}
                   >
-                    Sign up
+                    Login
                   </button>
                 </div>
               )}
@@ -171,8 +169,7 @@ export default function Header() {
           </div>
         )}
       </header>
-      <Modal isOpen={isModalOpen} onClose={closeModal} />
+      <AuthModal isOpen={isModalOpen} onClose={closeModal} />
     </>
   );
 }
-

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Film, Tag, Zap } from 'lucide-react';
-import TrendingMovies from './TrendingMovies';
+import TrendingMovies from './movielistsections/TrendingMovies';
 
 export default function HomePage(){
   const destination = '/explore';
@@ -76,4 +76,4 @@ export default function HomePage(){
       </div>
     </div>
   )
-}
+}

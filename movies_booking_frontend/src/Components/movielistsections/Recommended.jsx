@@ -9,10 +9,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const NextArrow = ({ onClick }) => {
   return (
     <div
-      className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-gray-900/80 border border-gray-700 hover:border-red-500 hover:bg-red-600 text-white p-3 rounded-full backdrop-blur-md transition-all duration-300 shadow-xl hover:scale-110 flex items-center justify-center group"
+      className="absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-gray-900/80 border border-gray-700 hover:border-red-500 hover:bg-red-600 text-white p-2 sm:p-3 rounded-full backdrop-blur-md transition-all duration-300 shadow-xl hover:scale-110 flex items-center justify-center group"
       onClick={onClick}
     >
-      <ChevronRight size={24} className="group-hover:text-white text-gray-300 transition-colors" />
+      <ChevronRight size={18} className="sm:hidden group-hover:text-white text-gray-300 transition-colors" />
+      <ChevronRight size={24} className="hidden sm:block group-hover:text-white text-gray-300 transition-colors" />
     </div>
   );
 };
@@ -20,10 +21,11 @@ const NextArrow = ({ onClick }) => {
 const PrevArrow = ({ onClick }) => {
   return (
     <div
-      className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-gray-900/80 border border-gray-700 hover:border-red-500 hover:bg-red-600 text-white p-3 rounded-full backdrop-blur-md transition-all duration-300 shadow-xl hover:scale-110 flex items-center justify-center group"
+      className="absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-gray-900/80 border border-gray-700 hover:border-red-500 hover:bg-red-600 text-white p-2 sm:p-3 rounded-full backdrop-blur-md transition-all duration-300 shadow-xl hover:scale-110 flex items-center justify-center group"
       onClick={onClick}
     >
-      <ChevronLeft size={24} className="group-hover:text-white text-gray-300 transition-colors" />
+      <ChevronLeft size={18} className="sm:hidden group-hover:text-white text-gray-300 transition-colors" />
+      <ChevronLeft size={24} className="hidden sm:block group-hover:text-white text-gray-300 transition-colors" />
     </div>
   );
 };
@@ -37,6 +39,8 @@ export default function Recommended(){
         slidesToScroll: 1,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
+        swipe: true,
+        touchMove: true,
         responsive: [
             {
                 breakpoint: 1280,
@@ -55,8 +59,17 @@ export default function Recommended(){
             {
                 breakpoint: 640,
                 settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 440,
+                settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
+                    centerMode: true,
+                    centerPadding: '20px',
                 }
             }
         ]
@@ -109,10 +122,10 @@ export default function Recommended(){
                 </h1>
             </div>
             
-            <div className="relative px-4">
+            <div className="relative px-6 sm:px-4">
                 <Slider {...settings} className="movie-carousel">
                     {movies.map((movie)=>(
-                        <div className="px-3 py-5" key={movie.id}> 
+                        <div className="px-2 sm:px-3 py-5" key={movie.id}> 
                             <MovieCard movie={movie} genreNamesString={getGenreNames(movie.genre_ids)} />
                         </div>
                     ))}

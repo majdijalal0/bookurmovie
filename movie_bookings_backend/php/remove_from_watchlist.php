@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . '/cors.php';      
+require_once __DIR__ . '/session_config.php';
+configure_session();
 session_start();                          
 require_once __DIR__ . '/db_connect.php';
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchMovies } from '../api/movieAPI';
+import { fetchMovies } from '../../api/movieAPI';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
@@ -14,7 +14,7 @@ export default function TrendingMovies() {
     const getTrending = async () => {
       try {
         const data = await fetchMovies('/trending/movie/day');
-        setMovies(data.slice(0, 10)); // Top 10 trending
+        setMovies(data.slice(0, 10)); 
       } catch (error) {
         console.error("Error fetching trending movies:", error);
       } finally {
