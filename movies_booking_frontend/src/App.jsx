@@ -9,7 +9,6 @@ const MovieList = lazy(() => import('./Components/movielistsections/MovieList'))
 const Booking = lazy(() => import('./Components/Booking'));
 const MovieDetails = lazy(() => import('./Components/MovieDetails'));
 const Profile = lazy(() => import('./Components/Login/Profile'));
-const Login = lazy(() => import('./Components/Login/Login'));
 const NotFound = lazy(() => import('./Components/NotFound'));
 const Watchlist = lazy(() => import('./Components/Watchlist'));
 
@@ -34,7 +33,6 @@ function App() {
               <Route path="/book/:id" element={<Booking />} />
               <Route path="/watchlist" element={<Watchlist />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/login" element={<Login />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
