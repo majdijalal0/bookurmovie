@@ -1,15 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Outfit:wght@300;400;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
+@import "tailwindcss";
+
 @font-face {
     font-family: Inter;
     src:url('./assets/fonts/Inter_18pt-Regular.ttf');
 }
 
-@import "tailwindcss";
-
-
-
 @layer base {
     body {
-        @apply bg-gray-950 text-white min-h-screen antialiased selection:bg-red-500 selection:text-white;
+        @apply bg-[#0A0B0E] text-white min-h-screen antialiased selection:bg-[#E31221] selection:text-white;
     }
 }
 
@@ -17,10 +16,98 @@
     .Inter {
         font-family: Inter, sans-serif;
     }
+    .font-outfit {
+        font-family: 'Outfit', sans-serif;
+    }
+    .font-jetbrains {
+        font-family: 'JetBrains Mono', monospace;
+    }
+    .font-display {
+        font-family: 'Playfair Display', serif;
+    }
     .glass-effect {
-        @apply bg-gray-900/50 backdrop-blur-md border border-gray-800 shadow-xl;
+        @apply bg-[#0A0B0E]/60 backdrop-blur-xl border border-gray-800 shadow-[0_0_30px_rgba(0,0,0,0.5)];
     }
     .glass-surface {
-        @apply bg-gray-900/40 backdrop-blur-lg border border-gray-700/50 shadow-2xl;
+        @apply bg-[#0A0B0E]/40 backdrop-blur-2xl border border-gray-700/50 shadow-2xl;
     }
+    .bento-card {
+        @apply bg-[#0A0B0E]/30 backdrop-blur-2xl border border-gray-400/20 shadow-2xl overflow-visible relative transition-all duration-300;
+    }
+    
+    .bg-grain {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+    }
+    
+    .metallic-text {
+        background: linear-gradient(135deg, #E2E8F0 0%, #94A3B8 50%, #475569 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .text-brass {
+        color: #C5A059;
+    }
+    .bg-electric-crimson {
+        background-color: #E31221;
+    }
+    .border-electric-crimson {
+        border-color: #E31221;
+    }
+    .text-electric-crimson {
+        color: #E31221;
+    }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 5px rgba(227,18,33,0.5); }
+  50% { transform: scale(1.6); opacity: 0.8; box-shadow: 0 0 15px rgba(227,18,33,1); }
+}
+
+@keyframes breathing-pill {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(227,18,33,0.15);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(227,18,33,0.3);
+    transform: scale(1.03);
+  }
+}
+
+@keyframes scroll-vertical {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes mesh-drift {
+  0% { transform: scale(1) translate(0, 0); }
+  33% { transform: scale(1.1) translate(4%, 4%); }
+  66% { transform: scale(0.9) translate(-4%, -4%); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.animate-mesh {
+  animation: mesh-drift 15s ease-in-out infinite alternate;
+}
+.animate-breathing-pill {
+  animation: breathing-pill 3s ease-in-out infinite;
+}
+.animate-scroll-vertical {
+  animation: scroll-vertical 40s linear infinite;
+}
+.animate-scroll-vertical-paused {
+  animation: scroll-vertical 40s linear infinite;
+  animation-play-state: paused;
 }

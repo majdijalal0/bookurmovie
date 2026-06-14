@@ -3,20 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Mail, Lock, User, Phone, ArrowLeft, ArrowRight } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
-import { useNavigate } from 'react-router-dom';
 
 const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
     const [mode, setMode] = useState(initialMode);
     const { setUser } = useAuth();
     const { addToast } = useToast();
-    const navigate = useNavigate();
 
-    // Login State
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const [isLoggingIn, setIsLoggingIn] = useState(false);
 
-    // Signup State
     const [signupData, setSignupData] = useState({
         name: '',
         email: '',
@@ -219,7 +215,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                                                         <input
                                                             type="tel"
                                                             className="w-full bg-gray-950/50 border border-gray-800 focus:border-red-600/50 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none transition-all"
-                                                            placeholder="+1..."
+                                                            placeholder="+212..."
                                                             value={signupData.phone}
                                                             onChange={(e) => setSignupData({...signupData, phone: e.target.value})}
                                                         />
@@ -235,7 +231,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                                                         type="email"
                                                         required
                                                         className="w-full bg-gray-950/50 border border-gray-800 focus:border-red-600/50 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none transition-all"
-                                                        placeholder="john@example.com"
+                                                        placeholder="user@example.com"
                                                         value={signupData.email}
                                                         onChange={(e) => setSignupData({...signupData, email: e.target.value})}
                                                     />

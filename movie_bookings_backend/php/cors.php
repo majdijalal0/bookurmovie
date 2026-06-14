@@ -3,7 +3,7 @@ if (file_exists(__DIR__ . '/config.php')) {
     require_once __DIR__ . '/config.php';
 }
 
-$allowed_origin = defined('FRONTEND_URL') ? FRONTEND_URL : (getenv('FRONTEND_URL') ?: 'https://bookurmovie.vercel.app');
+$allowed_origin = defined('FRONTEND_URL') ? FRONTEND_URL : 'http://localhost:3000';
 
 $allowed_origin = rtrim($allowed_origin, '/');
 
@@ -17,7 +17,7 @@ if ($origin === $allowed_origin || $origin === 'http://localhost:5173') {
 
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS,PUT,DELETE");
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
