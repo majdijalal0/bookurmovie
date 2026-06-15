@@ -202,7 +202,7 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'login' }) => {
                                                             type="text"
                                                             required
                                                             className="w-full bg-gray-950/50 border border-gray-800 focus:border-red-600/50 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none transition-all"
-                                                            placeholder="John Doe"
+                                                            placeholder="Full Name"
                                                             value={signupData.name}
                                                             onChange={(e) => setSignupData({...signupData, name: e.target.value})}
                                                         />
